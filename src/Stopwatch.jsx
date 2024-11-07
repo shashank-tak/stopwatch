@@ -25,7 +25,7 @@ const Stopwatch = () => {
     }, [start]);
 
     const reset = useCallback(() => {
-        setTime({ minutes: 0, seconds: '00' });
+        setTime({ minutes: 0, seconds: 0 });
         setStart(false);
     }, []);
 
@@ -36,7 +36,7 @@ const Stopwatch = () => {
     return (
         <div style={{position: 'absolute', left: '10px', display:'flex', flexDirection: 'column',alignItems:'left', textAlign:'left'}}>
             <h1>Stopwatch</h1>
-            <p>Time: {time.minutes}:{time.seconds}</p>
+            <p>Time: {time.minutes}:{String(time.seconds).padStart(2, '0')}</p>
             <div>
                 {start? <button onClick={toggleStart}>Stop</button> : <button onClick={toggleStart}>Start</button>}
                 <button onClick={reset}>Reset</button>
